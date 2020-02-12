@@ -1,0 +1,17 @@
+version: '3.4'
+
+services:
+  messengermicroservice:
+    image: ${DOCKER_REGISTRY-}messengermicroservice    
+    build:
+      context: .
+      dockerfile: MessengerMicroService/Dockerfile
+    links:
+      - rabbit
+
+  rabbit:
+    image: rabbitmq:3-management    
+    hostname: "rabbit"
+    ports:
+      - "15672:15672"
+      - "5672:5672"
