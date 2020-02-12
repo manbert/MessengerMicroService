@@ -5,6 +5,7 @@ using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
 using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
+using System.Diagnostics;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -77,6 +78,7 @@ namespace MessengerMicroService.Services
         //отправка в мессенджер
         private void HandleMessage(IMessage message)
         {
+            Debug.WriteLine($"Send to messenger: { JsonConvert.SerializeObject(message) } ");
             // we just print this message   
             //_logger.LogInformation($"consumer received {content}");
         }
